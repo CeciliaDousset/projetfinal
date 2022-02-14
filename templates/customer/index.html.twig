@@ -35,7 +35,7 @@
 
     {# PARTIE LISTE PRODUITS #}
 
-    <div class="container py-3">
+  {#  <div class="container py-3">
         <div class="row">
             <div class="col-12 mt-3">
                 {% include "customer/shared/_messages_flash.html.twig" %}
@@ -50,7 +50,7 @@
                 <a class="btn btn-link-dark " href="{{ path('customer_category_show',{'id' : category.id}) }}">{{ category.name }}</a>
             </div>
            
-            {# {% for product in category.products %} #}
+            {# {% for product in category.products %} 
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
                     <div class="card cardProduct">
                         <div class="card-header">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 
-                {# {% endfor %} #}
+                {% endfor %} 
             {% endfor %}
         </div>
     </div>
@@ -74,6 +74,57 @@
     <section class="music d-center col-lg-12 justify-content-around d-center">
 
     <section class="map  d-center col-lg-12 justify-content-around d-center">
+        <div class="d-center">
+            <iframe class=" col-lg-9 marge" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.3404862857014!2d2.32134151584141!3d48.88984790644496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66facdd056ea5%3A0x434b9db26f4d1fdc!2sBrasileirinho!5e0!3m2!1spt-PT!2sfr!4v1643890971193!5m2!1spt-PT!2sfr"   allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+{% endblock %} #}
+
+
+ <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3 text-center ">
+                <h1 >Menu</h1>
+                
+            </div>
+             <div class="col-12 mt-3">
+                {% include "customer/shared/_messages_flash.html.twig" %}
+            </div>
+
+            {% for category in categories %}
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <img src="{{ asset(category.imagePath) }}" alt="{{ category.name }}" class="w-100 imageCard">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="text-center">{{ category.name }}</h5>
+                        </div>
+                        
+                    
+               
+                {# {% for product in category.products %} #}
+            
+                    
+                        
+                        
+                        
+                        <div class="card-footer">
+                        <a class="btn btn-info w-100" href="{{ path('customer_category_show',{'id' : category.id}) }}"> Consulter </a>
+                        </div>
+                    </div>
+                    
+                    </div>
+               
+                
+                 {# {% endfor %} #}  
+            
+            {% endfor %}
+        </div>
+    
+    </div>
+
+    <section class="map  d-center  col-lg-12 justify-content-around d-center pt-5">
         <div class="d-center">
             <iframe class=" col-lg-9 marge" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.3404862857014!2d2.32134151584141!3d48.88984790644496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66facdd056ea5%3A0x434b9db26f4d1fdc!2sBrasileirinho!5e0!3m2!1spt-PT!2sfr!4v1643890971193!5m2!1spt-PT!2sfr"   allowfullscreen="" loading="lazy"></iframe>
         </div>
