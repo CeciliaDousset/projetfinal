@@ -81,33 +81,25 @@
 {% endblock %} #}
 
 
- <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col-12 mt-3 text-center ">
                 <h1 >Menu</h1>
-                
-            </div>
-             <div class="col-12 mt-3">
-                {% include "customer/shared/_messages_flash.html.twig" %}
-            </div>
+                    </div>
+                        <div class="col-12 mt-3">
+                    {% include "customer/shared/_messages_flash.html.twig" %}
+                        </div>
 
-            {% for category in categories %}
-                <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
-                    <div class="card">
+                    {% for category in categories %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+                        <div class="card">
                         <div class="card-header">
                             <img src="{{ asset(category.imagePath) }}" alt="{{ category.name }}" class="w-100 imageCard">
                         </div>
-                        <div class="card-body">
-                            <h5 class="text-center">{{ category.name }}</h5>
-                        </div>
-                        
-                    
-               
-                {# {% for product in category.products %} #}
-            
-                    
-                        
-                        
+                    <div class="card-body">
+                    <h5 class="text-center">{{ category.name }}</h5>
+                    </div>
+                        {# {% for product in category.products %} #}
                         
                         <div class="card-footer">
                         <a class="btn btn-info w-100" href="{{ path('customer_category_show',{'id' : category.id}) }}"> Consulter </a>
@@ -115,14 +107,19 @@
                     </div>
                     
                     </div>
-               
-                
-                 {# {% endfor %} #}  
+                    {# {% endfor %} #}  
             
             {% endfor %}
         </div>
     
     </div>
+    
+
+    
+        <div class="divHome card mt-5">
+       
+        </div>
+        
 
     <section class="map  d-center  col-lg-12 justify-content-around d-center pt-5">
         <div class="d-center">

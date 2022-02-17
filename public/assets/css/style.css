@@ -60,27 +60,27 @@ box-shadow: 0px 0px 7px 4px #000000;
     
 } */
 
-.border1 {
-
-    border: solid 1px red;
-    
-}
-.border2 {
-
-    border: solid 1px blue;
-    
-}
-.border3 {
-
-    border: solid 1px green;
-}
-
 .d-center {
     display: flexbox;
     justify-content: center;
     align-items: center;
 }
+/*
+.d-center2 {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}*/
 
 .marge {
     margin-left: 200px;
+}
+.divHome
+{
+    /*background-image: url("{{ asset('../../uploads/images/1.png') }}");*/
+    background-image: url("../../uploads/images/menu.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 85vh;
+    object-fit: cover;
 }
