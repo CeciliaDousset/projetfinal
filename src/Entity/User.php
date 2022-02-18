@@ -59,6 +59,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $commandShops;
 
+
     public function __construct()
     {
         $this->commandShops = new ArrayCollection();
@@ -223,4 +224,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-}
+
+    
+    }
+
