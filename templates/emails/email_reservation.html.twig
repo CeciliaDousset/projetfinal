@@ -1,0 +1,26 @@
+{% apply inline_css %}
+ <style>
+    h1 {
+        color:blue;
+    }
+    h3 {
+        color:red;
+    }
+ </style>
+{% endapply %}
+
+<h1>Message contact client</h1>
+<hr>
+<p><strong>Nom : {{ type_nom }}</strong></p>
+
+<hr>
+<h3>Informations client</h3>
+<p><strong>Nom complet : {{ le_prenom }}</strong></p>
+<br>
+<p><strong>Votre RDV : {{ RDV | date("m/d/Y") }}</strong></p>
+<br>
+<p><strong>Téléphone : {{ telephone_customer }}</strong></p>
+<hr>
+<h3>Contenu du message</h3>
+<br>
+<p>Votre commande a été bien enregistré</p>

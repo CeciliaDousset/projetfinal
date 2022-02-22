@@ -2,11 +2,12 @@
 
 namespace App\MesServices;
 
-use App\Entity\CommandDeliveryAddress;
-use App\Entity\CommandListProduct;
 use DateTime;
 use App\Entity\User;
 use App\Entity\CommandShop;
+use App\Entity\Reservation;
+use App\Entity\CommandListProduct;
+use App\Entity\CommandDeliveryAddress;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
@@ -66,4 +67,29 @@ class MailerService
 
 $this->mailer->send($email);
     }
+
+    public function sendReservationMail(array $data, Reservation $reservation)
+    {
+        $email = (new TemplatedEmail())
+                ->from('contact@symfonyecommerce.com')
+                ->to('contact@symfonyecommerce.com')
+                ->subject($data['type_nom'])
+
+                // path of the Twig template to render
+                ->htmlTemplate('emails/email_reservation.html.twig')
+
+                // pass variables (name => value) to the template
+                ->context([
+                    'type_nom' => $data['type_nom'],
+                    'le_prenom' => $data['le_prenom'],
+                    'RDV' => $reservation->getDatetime(),
+                  
+                    'couvert' => $data['couvert'],
+                    'telephone_customer' => $data['telephone_customer']
+                ])
+            ;
+
+        $this->mailer->send($email);
+    }
+
 }

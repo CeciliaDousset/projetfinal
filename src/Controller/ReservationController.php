@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\MesServices\MailerService;
 
 
 
@@ -19,7 +20,8 @@ class ReservationController extends AbstractController
     
 #[Route('reservation', name:'reservation')]
 
-    public function reservation(Request $request,EntityManagerInterface $em){
+    public function reservation(Request $request,MailerService $mailerService,EntityManagerInterface $em){
+        
         $form = $this->createForm(ReservationFormType::class);
         $form->handleRequest($request);
         $data = $form-> getData();
@@ -32,6 +34,7 @@ class ReservationController extends AbstractController
            $reservation->setNom($data['type_nom']);
            $reservation->setDatetime($data['RDV']);
            $reservation->setTelephone($data['telephone_customer']);
+           
 
 
            
@@ -39,8 +42,8 @@ class ReservationController extends AbstractController
             
             $em->persist($reservation);
             $em->flush();
-            $this->addFlash('success', 'Vouz avez bien faite votre reservation');
-
+            $this->addFlash('success', 'Vouz avez bien fait votre reservation');
+            $mailerService->sendReservationMail($data,$reservation);
             return $this->redirectToRoute('customer_home',['id'=>$reservation->getId()]);
             
 

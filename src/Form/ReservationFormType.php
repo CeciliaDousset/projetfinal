@@ -6,7 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ReservationFormType extends AbstractType
 {
@@ -24,7 +26,7 @@ class ReservationFormType extends AbstractType
                     ]
                 ]
             )
-     
+
 
             ->add(
                 'le_prenom',
@@ -37,30 +39,39 @@ class ReservationFormType extends AbstractType
                     ]
                 ]
             )
-
+            
             
 
-           ->add('RDV', DateTimeType::class, [
-                'placeholder' => [
-                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
-                    'hour' => 'Hour', 
+            ->add('RDV', DateType::class, [
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y') + 1),
+                'required' => false,
+                'label' => '',
+                
+            ])
+                
+           
+            
+            ->add('couvert', ChoiceType::class, [
+                'choices' => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                    '6' => 7,
+                    '7' => 8,
+                    '8' => 9,
+                    '9' => 10,
+
                 ]
-             ]
-           )
+            ]
+        )
             
 
-                ->add(
-                    'type_nom',
-                    TextType::class,
-                    [
-                        'required' => false,
-                        'label'   => 'Nom',
-                        'constraints' => [
-                            new NotBlank(['message' => 'Vous devez renseigner votre nom']),
-                        ]
-                    ]
-                )
-            
+
+          
+
             ->add(
                 'telephone_customer',
                 TextType::class,
@@ -72,9 +83,5 @@ class ReservationFormType extends AbstractType
                     ]
                 ]
             );
-        }
+    }
 }
-           
-        
-    
-          
