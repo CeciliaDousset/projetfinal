@@ -5,10 +5,11 @@ namespace App\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ReservationFormType extends AbstractType
 {
@@ -39,6 +40,14 @@ class ReservationFormType extends AbstractType
                     ]
                 ]
             )
+        
+            ->add('Horaire', TimeType::class, [
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'constraints' => [
+                    new NotBlank(['message' => 'Vous devez renseigner le horaire']),
+                ]
+            ])
             
             
 
@@ -50,6 +59,7 @@ class ReservationFormType extends AbstractType
                 
             ])
                 
+           
            
             
             ->add('couvert', ChoiceType::class, [
@@ -84,4 +94,5 @@ class ReservationFormType extends AbstractType
                 ]
             );
     }
+
 }

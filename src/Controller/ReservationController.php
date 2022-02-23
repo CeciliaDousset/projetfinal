@@ -34,6 +34,8 @@ class ReservationController extends AbstractController
            $reservation->setNom($data['type_nom']);
            $reservation->setDatetime($data['RDV']);
            $reservation->setTelephone($data['telephone_customer']);
+           $reservation->setCreatedAt($data['Horaire']);
+           $reservation->setCouvert($data['couvert']);
            
 
 

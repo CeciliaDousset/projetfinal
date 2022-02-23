@@ -60,10 +60,30 @@ box-shadow: 0px 0px 7px 4px #000000;
     
 } */
 
+.section1 {
+    background-image: url('../../uploads/images/coqueiro.jpg');
+    background-size: cover;
+    position: relative;
+    z-index: -1;
+    max-width: 100%;
+    height: auto;
+}
+.textHome1 {
+    color: black;
+    z-index: 1;
+    text-align: center;
+    
+}
 .d-center {
-    display: flexbox;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+.d-center-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 /*
 .d-center2 {
@@ -71,16 +91,8 @@ box-shadow: 0px 0px 7px 4px #000000;
     justify-content: center;
     align-items: center;
 }*/
-
+/* 
 .marge {
     margin-left: 200px;
-}
-.divHome
-{
-    /*background-image: url("{{ asset('../../uploads/images/1.png') }}");*/
-    background-image: url("../../uploads/images/menu.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 85vh;
-    object-fit: cover;
-}
+} */
+

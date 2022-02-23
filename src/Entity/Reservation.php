@@ -37,6 +37,17 @@ class Reservation
      */
     private $CommandShop;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $couvert;
+
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -89,4 +100,30 @@ class Reservation
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCouvert(): ?string
+    {
+        return $this->couvert;
+    }
+
+    public function setCouvert(string $couvert): self
+    {
+        $this->couvert = $couvert;
+
+        return $this;
+    }
+
+   
 }

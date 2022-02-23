@@ -83,7 +83,7 @@ $this->mailer->send($email);
                     'type_nom' => $data['type_nom'],
                     'le_prenom' => $data['le_prenom'],
                     'RDV' => $reservation->getDatetime(),
-                  
+                    'horaire'=>$reservation->getDatetime(),
                     'couvert' => $data['couvert'],
                     'telephone_customer' => $data['telephone_customer']
                 ])
