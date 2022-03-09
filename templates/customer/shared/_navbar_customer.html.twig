@@ -1,76 +1,84 @@
-<nav class="navbar navbar-expand-lg navbar-light p-0 mb-0 bg-light text-white fixed-top navbar-scroll">
+<nav class="navbar navbar-expand-lg navbar-light p-1 mb-1 bg-light text-white-hover absolute navbar-scroll">
 
-  <a class="navbar-brand " href="{{ path('customer_home') }}">  <img class="logo" src="{{ asset('uploads/images/logo.png') }}" height="45px" class="d-inline-block align-top" > </a>
+	<div class="container justify-content-center">
 
-  <div class="container-fluid">
-    <a class="navbar-brand " href="{{ path('customer_home') }}">Restaurant Brasileirinho</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      
-      {% for category in categoryRepository.findAll() %}
+		<a class="navbar-brand " href="{{ path('customer_home') }}">
+			<img class="logo" src="{{ asset('uploads/images/logo.png') }}" height="45px" class="d-inline-block align-top">
+		</a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('customer_category_show',{'id' : category.id}) }}">{{ category.name }}</a>
-            </li>
+		<a class="navbar-brand justify-content-center" href="{{ path('customer_home') }}">
+			Restaurant Brasileirinho</a>
+		<div class="container-fluid">
+
+			{# menu burguer #}
+            <div class="menu">
+			<button class="navbar-toggler  p-0 ml-2  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+            </div>
             
 
-        {% endfor %}
-          <li class="nav-item">
-                <a class="nav-link" href="{{ path('reservation') }}">Reservation</a>
-            </li>
-
-
-        {% if app.user %}
-
-            {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('admin_home') }}">Admin</a>
-                </li>
-
-            {% endif %}
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_logout') }}">Se deconecter</a>
-            </li>
-            
-        {% else %}
-        
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_register') }}">Créer un compte</a>
-            </li>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+					{# categories navbar #}
+					{% for category in categoryRepository.findAll() %}
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
-            </li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('customer_category_show',{'id' : category.id}) }}">{{ category.name }}</a>
+						</li>
 
-        {% endif %}
-          
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('cart_detail') }}">Mon panier</a>
-            </li>
+                   
+					{% endfor %}
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('customer_contact') }}">Contact</a>
-            </li>
-            </ul>
 
-        
+					{% if app.user %}
 
-            
-            {#  <form class="form-inline d-flex my-2 my-lg-0">
-       <input class="form-control me-2" type="tex" placeholder="rechercher" name="query" aria-label="Search">
-            <button class="" type="submit">Rechercher</button>
-         </form>
-            #}
-     {% include "search/_searchbar.html.twig" %}
-    </div>
-  </div>
+						{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
 
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('admin_home') }}">Admin</a>
+							</li>
+
+						{% endif %}
+
+
+
+					{% else %}
+
+
+				{% endif %}
+
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle color_nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Mon compte
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li>
+							<a class="dropdown-item" href="{{ path('cart_detail') }}">Mon panier</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('reservation') }}">Reservation de Table</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_login') }}">Se connecter</a>
+						</li>
+						<li>
+						<a class="dropdown-item" href="{{ path('app_logout') }}">Se deconecter</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_register') }}">S'inscrire</a>
+						</li>
+					</ul>
+				</li>
+
+
+			</div>
+		</div>
+		{% include "search/_searchbar.html.twig" %}
+	</div>
 </div>
+
 </nav>

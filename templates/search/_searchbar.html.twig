@@ -1,8 +1,9 @@
-<div class="">
-    <form class="d-flex" action="{{ path('handleSearch') }}" method="GET">
+
+<div class="container d-flex align-items-md-cente ">
+    <form class="bd-search position-relative me-auto d-flex" action="{{ path('handleSearch') }}" method="GET">
             
-        <input class="form-control me-2" type="tex" placeholder="rechercher" name="query" aria-label="Search">
-            <button class="" type="submit">Rechercher</button>
+        <input class="form-control me-1 p-1 mb-1" type="tex" placeholder="Ex: feijoada" name="query" aria-label="Search">
+            <button class="btn btn-outline-success p-1" type="submit">Rechercher</button>
     </form>
 </div>
 

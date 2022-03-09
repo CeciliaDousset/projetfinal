@@ -38,7 +38,7 @@
                                                     <img src=" {{ item.product.imagePath }}" alt="{{ item.product.name }}" class="imageProductCart">
                                                     <div class="d-flex flex-column align-items-center justify-content-center">
                                                         <p>{{ item.product.name }}</p>
-                                                        <a class="btn btn-link text-danger btn-sm" href="{{ path('remove_item_cart',{'id': item.product.id }) }}"><i class="fas fa-trash"></i> Supprimer</a>
+                                                        <a class="btn btn-outline-success btn-lg border border-dark rounded-lg text-danger btn-sm" href="{{ path('remove_item_cart',{'id': item.product.id }) }}"><i class="fas fa-trash"></i> Supprimer</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <a href="{{ path('customer_recap_order') }}" class="btn btn-primary"> Valider mon panier</a>
+                            <a href="{{ path('customer_recap_order') }}" class="btn btn-outline-success btn-lg border border-dark rounded-lg"> Valider mon panier</a>
                         </div>
 
                     {% else %}

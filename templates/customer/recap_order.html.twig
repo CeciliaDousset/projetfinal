@@ -65,7 +65,7 @@
                     <div class="card-body">
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <button class="btn btn-primary mt-3">Enregistrer</button>
+                        <button class="btn btn-outline-success btn-lg border border-dark rounded-lgmt-3">Enregistrer</button>
                         {{ form_end(form) }}
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     <div class="card-body">
                         {% if app.user.address is not same as null %}
                             <form action="{{ path('create_checkout_session') }}" method="POST">
-                                <button type="submit" id="checkout-button" class="btn btn-success w-100">Paiement sur stripe</button>
+                                <button type="submit" id="checkout-button" class="btn btn-outline-success btn-lg border border-dark rounded-lg w-100">Paiement sur stripe</button>
                             </form>
                         {% else %}
                             <p>Veuillez configurer votre adresse pour pouvoir finaliser la commande.</p>
@@ -91,7 +91,7 @@
                         <h3 class="text-center">Veuillez vous connecter</h3>
                     </div>
                     <div class="card-body">
-                        <p>Déjà un compte ? <a href="{{ path('app_login' )}}" class="btn btn-primary">Veuillez vous connecter</a></p>
+                        <p>Déjà un compte ? <a href="{{ path('app_login' )}}" class="btn btn-outline-success btn-lg border border-dark rounded-lg">Veuillez vous connecter</a></p>
                         <hr>
                         <p>Pas encore de compte ? <a href="{{ path('app_register' )}}" class="btn btn-link">Veuillez en créer un</a></p>
                     </div>
