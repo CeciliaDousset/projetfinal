@@ -30,7 +30,7 @@ class CustomerProductController extends AbstractController
     /**
      * @Route("customer/category/{id}", name="customer_category_show")
      */
-    public function productsByCategory(int $id, CategoryRepository $categoryRepository)
+    public function productsByCategory(int $id, CategoryRepository $categoryRepository,ProductRepository $productRepository)
     {
         $category = $categoryRepository->find($id);
 
@@ -39,8 +39,16 @@ class CustomerProductController extends AbstractController
             return $this->redirectToRoute("customer_home");
         }
 
+       $products = $productRepository->findBy(
+        [
+            'category'=> $category, 
+            'isVisible'=>true,
+        ]
+       ); 
+
         return $this->render("customer/category_show.html.twig",[
-            'category' => $category
+            'category' => $category,
+            'products'=>$products
         ]);
     }
 }
